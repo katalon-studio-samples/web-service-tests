@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Find user by Id use Custom Keyword</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c0825012-3739-43ca-9518-60bc7c2a15fd</testCaseGuid>
+   <variable>
+      <defaultValue>18</defaultValue>
+      <description></description>
+      <id>c01f9799-0b50-4449-9381-55ef5499f42a</id>
+      <masked>false</masked>
+      <name>age</name>
+   </variable>
+   <variable>
+      <defaultValue>'alicephan'</defaultValue>
+      <description></description>
+      <id>c286e457-b6f1-4251-b3ff-4b8732ca5dd9</id>
+      <masked>false</masked>
+      <name>username</name>
+   </variable>
+   <variable>
+      <defaultValue>'122456&amp;*()'</defaultValue>
+      <description></description>
+      <id>dc24082d-c647-404f-aad4-147039c3b351</id>
+      <masked>false</masked>
+      <name>password</name>
+   </variable>
+   <variable>
+      <defaultValue>'MALE'</defaultValue>
+      <description></description>
+      <id>c61e367d-e8d2-440b-8b62-b1afb19bf7e3</id>
+      <masked>false</masked>
+      <name>gender</name>
+   </variable>
+   <variable>
+      <defaultValue>GlobalVariable.successCode</defaultValue>
+      <description></description>
+      <id>81f19eb0-e0a1-4d14-8213-0af7f1294b09</id>
+      <masked>false</masked>
+      <name>expectedStatusCode</name>
+   </variable>
+</TestCaseEntity>
