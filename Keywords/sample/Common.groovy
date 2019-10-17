@@ -40,7 +40,7 @@ public class Common {
 
 	@Keyword
 	def static void findUserById(int id, int age, String username, String password, String gender, int expectedStatus) {
-		def response = WS.sendRequest(findTestObject('Object Repository/GET user by id', [('id') : age]))
+		def response = WS.sendRequest(findTestObject('Object Repository/GET user by id', [('id') : id]))
 
 		Common.verifyStatusCode(response, expectedStatus)
 		WS.verifyElementPropertyValue(response, "id", id)
