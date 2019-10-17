@@ -16,15 +16,6 @@ import groovy.json.JsonSlurper as JsonSlurper
 import com.kms.katalon.core.testobject.RequestObject as RequestObject
 import static org.assertj.core.api.Assertions.*
 
-TestObject createNewUser = findTestObject('Object Repository/POST a new user', [('age') : age, ('username') : username, ('password') : password
-        , ('gender') : gender])
+int id = CustomKeywords.'sample.Common.createNewUser'(age as Integer, username, password, gender, expectedStatusCode)
 
-int newUserId = CustomKeywords.'verify.Common.getIdOfNewUser'(createNewUser, age, username, password, gender)
-
-TestObject findUser = findTestObject('Object Repository/GET user by id', [('id') : newUserId])
-
-CustomKeywords.'verify.Common.getIdOfNewUser'(findUser, age, username, password, gender)
-
-CustomKeywords.'verify.Common.verifyStatusCode'(findUser, expectedStatusCode)
-
-CustomKeywords.'verify.GetUser.getAttributeOfGETResponse'(newUserId, findUser)
+CustomKeywords.'sample.Common.findUserById'(id, age as Integer, username, password, gender, expectedStatusCode)

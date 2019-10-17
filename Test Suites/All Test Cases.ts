@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>BasicAPI</name>
+   <name>All Test Cases</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -14,7 +14,7 @@
       <guid>28a02fc5-00a1-40cf-9a4b-ad8847be59bb</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Create a new user use Custom Keyword</testCaseId>
+      <testCaseId>Test Cases/Create a new user</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>b29e6e15-9644-43a0-aaf0-99da7e54f7fb</id>
@@ -65,7 +65,7 @@
       <guid>ed2e6354-f2d0-43dd-9ff7-bb978536040e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Find user by Id use Custom Keyword</testCaseId>
+      <testCaseId>Test Cases/Find user by ID</testCaseId>
       <variableLink>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>

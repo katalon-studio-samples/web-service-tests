@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>Find user by Id use Custom Keyword</name>
+   <name>Find user by ID</name>
    <tag></tag>
    <comment></comment>
    <testCaseGuid>c0825012-3739-43ca-9518-60bc7c2a15fd</testCaseGuid>
