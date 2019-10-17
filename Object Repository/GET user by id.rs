@@ -19,13 +19,6 @@
    <soapRequestMethod></soapRequestMethod>
    <soapServiceFunction></soapServiceFunction>
    <variables>
-      <defaultValue>GlobalVariable.baseUrl</defaultValue>
-      <description></description>
-      <id>17eb565f-0471-47d8-8f6d-b9c4089bd1fe</id>
-      <masked>false</masked>
-      <name>baseUrl</name>
-   </variables>
-   <variables>
       <defaultValue>1</defaultValue>
       <description></description>
       <id>d74809c6-0414-4363-ad57-429e2a282617</id>

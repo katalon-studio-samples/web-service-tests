@@ -21,7 +21,7 @@ public class Common {
 	@Keyword
 	def static ResponseObject getResponseObject(TestObject request) {
 		RequestObject requestObject = (RequestObject) request
-		ResponseObject response = WSBuiltInKeywords.sendRequest(requestObject)
+		ResponseObject response = WSBuiltInKeywords.sendRequestAndVerify(requestObject)
 		return response
 	}
 

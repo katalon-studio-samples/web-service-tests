@@ -30,13 +30,6 @@
    <soapRequestMethod></soapRequestMethod>
    <soapServiceFunction></soapServiceFunction>
    <variables>
-      <defaultValue>GlobalVariable.baseUrl</defaultValue>
-      <description></description>
-      <id>38712806-9298-4bf4-bf4f-de45cfbdbcdd</id>
-      <masked>false</masked>
-      <name>baseUrl</name>
-   </variables>
-   <variables>
       <defaultValue>18</defaultValue>
       <description></description>
       <id>0ff0fdb5-ffe2-454e-8cf9-c2d44e21ddac</id>
@@ -77,6 +70,7 @@ import internal.GlobalVariable as GlobalVariable
 RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
-</verificationScript>
+
+println(request.getVariables())</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

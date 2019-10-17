@@ -13,9 +13,8 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-
-TestObject newUser = findTestObject("POST a new user",["age": age, "username": username, "password": password,"gender": gender])
+TestObject newUser = findTestObject('POST a new user', [('age') : age, ('username') : username, ('password') : password, ('gender') : gender])
 
 CustomKeywords.'verify.Common.verifyStatusCode'(newUser, expectedStatusCode)
 
-CustomKeywords.'verify.CreateNewUser.getAttributeOfPostResponse'(newUser, (Integer)age, username, password, gender)
+CustomKeywords.'verify.CreateNewUser.getAttributeOfPostResponse'(newUser, ((age) as Integer), username, password, gender)
