@@ -14,4 +14,9 @@
       <initValue>200</initValue>
       <name>successCode</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>globalId</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

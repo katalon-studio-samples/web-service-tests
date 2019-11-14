@@ -6,21 +6,21 @@
    <comment></comment>
    <testCaseGuid>82ae77d1-766b-4d6a-9919-0f856f4ae349</testCaseGuid>
    <variable>
-      <defaultValue>21</defaultValue>
+      <defaultValue>25</defaultValue>
       <description></description>
       <id>0de4fa76-1864-4d5e-aa8a-70ad8f4f4342</id>
       <masked>false</masked>
       <name>age</name>
    </variable>
    <variable>
-      <defaultValue>'ngoc'</defaultValue>
+      <defaultValue>'mimi'</defaultValue>
       <description></description>
       <id>086a27a9-05ed-4e07-8465-e17bddfdeac1</id>
       <masked>false</masked>
       <name>username</name>
    </variable>
    <variable>
-      <defaultValue>'1234567890'</defaultValue>
+      <defaultValue>'123456789'</defaultValue>
       <description></description>
       <id>311c2780-afd0-4352-a23f-fc00c2c42271</id>
       <masked>false</masked>
@@ -34,17 +34,10 @@
       <name>avatar</name>
    </variable>
    <variable>
-      <defaultValue>'FEMALE'</defaultValue>
+      <defaultValue>'MALE'</defaultValue>
       <description></description>
       <id>3b3cb3f6-19ff-4f44-ae2c-a1c680bd3044</id>
       <masked>false</masked>
       <name>gender</name>
-   </variable>
-   <variable>
-      <defaultValue>GlobalVariable.successCode</defaultValue>
-      <description></description>
-      <id>f1c9042c-8dca-4d38-ba9e-77542f9e8d20</id>
-      <masked>false</masked>
-      <name>expectedStatusCode</name>
    </variable>
 </TestCaseEntity>
