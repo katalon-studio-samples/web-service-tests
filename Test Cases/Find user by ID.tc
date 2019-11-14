@@ -6,21 +6,21 @@
    <comment></comment>
    <testCaseGuid>c0825012-3739-43ca-9518-60bc7c2a15fd</testCaseGuid>
    <variable>
-      <defaultValue>18</defaultValue>
+      <defaultValue>25</defaultValue>
       <description></description>
       <id>c01f9799-0b50-4449-9381-55ef5499f42a</id>
       <masked>false</masked>
       <name>age</name>
    </variable>
    <variable>
-      <defaultValue>'alicephan'</defaultValue>
+      <defaultValue>'mimi'</defaultValue>
       <description></description>
       <id>c286e457-b6f1-4251-b3ff-4b8732ca5dd9</id>
       <masked>false</masked>
       <name>username</name>
    </variable>
    <variable>
-      <defaultValue>'122456&amp;*()'</defaultValue>
+      <defaultValue>'123456789'</defaultValue>
       <description></description>
       <id>dc24082d-c647-404f-aad4-147039c3b351</id>
       <masked>false</masked>
@@ -34,10 +34,10 @@
       <name>gender</name>
    </variable>
    <variable>
-      <defaultValue>GlobalVariable.successCode</defaultValue>
+      <defaultValue>GlobalVariable.globalId</defaultValue>
       <description></description>
-      <id>81f19eb0-e0a1-4d14-8213-0af7f1294b09</id>
+      <id>12db7b5a-6bfc-4927-83be-322afbf82b91</id>
       <masked>false</masked>
-      <name>expectedStatusCode</name>
+      <name>id</name>
    </variable>
 </TestCaseEntity>

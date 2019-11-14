@@ -61,7 +61,7 @@
       <name>expectedStatusCode</name>
    </variables>
    <variables>
-      <defaultValue>1</defaultValue>
+      <defaultValue>7</defaultValue>
       <description></description>
       <id>c4249c68-7dc1-4ffc-ad8e-a4109ce4bb7b</id>
       <masked>false</masked>
@@ -80,8 +80,8 @@ RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 assert response.getStatusCode() == 200
 WS.verifyElementPropertyValue(response, &quot;age&quot;, 25)
-WS.verifyElementPropertyValue(response, &quot;username&quot;, &quot;John Smith&quot;)
-WS.verifyElementPropertyValue(response, &quot;password&quot;, &quot;123&quot;)
+WS.verifyElementPropertyValue(response, &quot;username&quot;, &quot;mimi&quot;)
+WS.verifyElementPropertyValue(response, &quot;password&quot;, &quot;123456789&quot;)
 WS.verifyElementPropertyValue(response, &quot;gender&quot;, &quot;MALE&quot;)</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>
