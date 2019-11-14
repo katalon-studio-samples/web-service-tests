@@ -64,13 +64,14 @@ import com.kms.katalon.core.testobject.ResponseObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webservice.verification.WSResponseManager
 
-import groovy.json.JsonSlurper
 import internal.GlobalVariable as GlobalVariable
 
 RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
-
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
-
-println(request.getVariables())</verificationScript>
+assert response.getStatusCode() == 200
+WS.verifyElementPropertyValue(response, &quot;age&quot;, 18)
+WS.verifyElementPropertyValue(response, &quot;username&quot;, &quot;mimi&quot;)
+WS.verifyElementPropertyValue(response, &quot;password&quot;, &quot;123456789&quot;)
+WS.verifyElementPropertyValue(response, &quot;gender&quot;, &quot;MALE&quot;)</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

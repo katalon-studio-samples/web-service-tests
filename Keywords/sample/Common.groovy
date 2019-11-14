@@ -25,14 +25,8 @@ public class Common {
 
 	@Keyword
 	def int createNewUser(int age, String username, String password, String gender, int expectedStatus) {
-		def response = WS.sendRequest(findTestObject("Object Repository/POST a new user",
+		def response = WS.sendRequestAndVerify(findTestObject("Object Repository/POST a new user",
 				["age": age, "username": username, "password": password, "gender": gender]))
-
-		Common.verifyStatusCode(response, expectedStatus)
-		WS.verifyElementPropertyValue(response, "age", age)
-		WS.verifyElementPropertyValue(response, "username", username)
-		WS.verifyElementPropertyValue(response, "password", password)
-		WS.verifyElementPropertyValue(response, "gender", gender)
 
 		def jsonResponse = jsonSlurper.parseText(response.getResponseText())
 		return jsonResponse.id
@@ -40,13 +34,8 @@ public class Common {
 
 	@Keyword
 	def static void findUserById(int id, int age, String username, String password, String gender, int expectedStatus) {
-		def response = WS.sendRequest(findTestObject('Object Repository/GET user by id', [('id') : id]))
-
-		Common.verifyStatusCode(response, expectedStatus)
-		WS.verifyElementPropertyValue(response, "id", id)
-		WS.verifyElementPropertyValue(response, "age", age)
-		WS.verifyElementPropertyValue(response, "username", username)
-		WS.verifyElementPropertyValue(response, "password", password)
-		WS.verifyElementPropertyValue(response, "gender", gender)
+		def response = WS.sendRequestAndVerify(findTestObject('Object Repository/GET user by id', [('id') : id]))
+		def jsonResponse = jsonSlurper.parseText(response.getResponseText())
+		println jsonResponse;
 	}
 }
