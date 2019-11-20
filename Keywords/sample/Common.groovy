@@ -15,14 +15,6 @@ public class Common {
 
 	public static JsonSlurper jsonSlurper = new JsonSlurper()
 
-	def static void verifyStatusCode(ResponseObject response, int expectedStatusCode) {
-		if (response.getStatusCode() == expectedStatusCode) {
-			KeywordUtil.markPassed("Response status codes match")
-		} else {
-			KeywordUtil.markFailed("Response status code not match. Expected: ${expectedStatusCode} - Actual: ${response.getStatusCode()}")
-		}
-	}
-
 	@Keyword
 	def int createNewUser(int age, String username, String password, String gender, int expectedStatus) {
 		def response = WS.sendRequestAndVerify(findTestObject("Object Repository/POST a new user",
@@ -34,8 +26,6 @@ public class Common {
 
 	@Keyword
 	def static void findUserById(int id, int age, String username, String password, String gender, int expectedStatus) {
-		def response = WS.sendRequestAndVerify(findTestObject('Object Repository/GET user by id', [('id') : id]))
-		def jsonResponse = jsonSlurper.parseText(response.getResponseText())
-		println jsonResponse;
+		WS.sendRequestAndVerify(findTestObject('Object Repository/GET user by id', [('id') : id]))
 	}
 }
