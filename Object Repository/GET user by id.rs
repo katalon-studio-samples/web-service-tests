@@ -17,7 +17,9 @@
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
+   <soapServiceEndpoint></soapServiceEndpoint>
    <soapServiceFunction></soapServiceFunction>
+   <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
    <variables>
       <defaultValue>21</defaultValue>
       <description></description>
@@ -61,7 +63,7 @@
       <name>expectedStatusCode</name>
    </variables>
    <variables>
-      <defaultValue>7</defaultValue>
+      <defaultValue>4</defaultValue>
       <description></description>
       <id>c4249c68-7dc1-4ffc-ad8e-a4109ce4bb7b</id>
       <masked>false</masked>
@@ -78,10 +80,10 @@ import internal.GlobalVariable as GlobalVariable
 
 RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
-assert response.getStatusCode() == 200
-WS.verifyElementPropertyValue(response, &quot;age&quot;, 25)
-WS.verifyElementPropertyValue(response, &quot;username&quot;, &quot;mimi&quot;)
-WS.verifyElementPropertyValue(response, &quot;password&quot;, &quot;123456789&quot;)
-WS.verifyElementPropertyValue(response, &quot;gender&quot;, &quot;MALE&quot;)</verificationScript>
+//assert response.getStatusCode() == 200
+//WS.verifyElementPropertyValue(response, &quot;age&quot;, 25)
+//WS.verifyElementPropertyValue(response, &quot;username&quot;, &quot;mimi&quot;)
+//WS.verifyElementPropertyValue(response, &quot;password&quot;, &quot;123456789&quot;)
+//WS.verifyElementPropertyValue(response, &quot;gender&quot;, &quot;MALE&quot;)</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>
