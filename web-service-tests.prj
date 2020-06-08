@@ -3,10 +3,9 @@
    <description></description>
    <name>web-service-tests</name>
    <tag></tag>
-   <UUID>04f2a969-4b83-454d-8224-eb270bc233ae</UUID>
+   <UUID>4944de0d-f865-41c5-8f26-b7e143c3a65a</UUID>
    <migratedVersion>5.9.0</migratedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>C:\Users\lieuhuynh\Katalon Studio\Testing API project\web-service-tests.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

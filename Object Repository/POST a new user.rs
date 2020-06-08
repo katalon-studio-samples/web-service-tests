@@ -28,9 +28,7 @@
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
-   <soapServiceEndpoint></soapServiceEndpoint>
    <soapServiceFunction></soapServiceFunction>
-   <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
    <variables>
       <defaultValue>18</defaultValue>
       <description></description>

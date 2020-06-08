@@ -17,9 +17,7 @@
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
-   <soapServiceEndpoint></soapServiceEndpoint>
    <soapServiceFunction></soapServiceFunction>
-   <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
    <variables>
       <defaultValue>21</defaultValue>
       <description></description>
@@ -63,7 +61,7 @@
       <name>expectedStatusCode</name>
    </variables>
    <variables>
-      <defaultValue>4</defaultValue>
+      <defaultValue>7</defaultValue>
       <description></description>
       <id>c4249c68-7dc1-4ffc-ad8e-a4109ce4bb7b</id>
       <masked>false</masked>
