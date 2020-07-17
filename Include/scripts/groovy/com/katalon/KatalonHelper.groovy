@@ -63,31 +63,35 @@ public class KatalonHelper {
 	public static final String APP_USER_DIR_LOCATION = KATALON_HOME_DIR + File.separator + ".katalon";
 
 	public static void updateInfo() {
-		Path testOpsSettingsPath = Paths.get(RunConfiguration.getProjectDir(),
-				'settings', 'internal', 'com.kms.katalon.integration.analytics.properties')
-		File testOpsSettingsFile = testOpsSettingsPath.toFile()
-		if(!isIntegratedEnabled(testOpsSettingsFile)){
-			Properties userProperties = getUserProperties()
-			String username = userProperties.getProperty('email')
-			String encryptedPassword = userProperties.getProperty('password')
-			String password = (CryptoUtil.decode(CryptoUtil.getDefault(encryptedPassword)))
-			String serverUrl = userProperties.getProperty('testOps.serverUrl')
-			if(StringUtils.isBlank(serverUrl)){
-				serverUrl = DEFAULT_SERVER_URL
-			}
-			String token = requestToken(serverUrl, username, password)
-			def (project, team) = getFirstProject(serverUrl, token)
-			if(project != null && team != null){
-				Properties properties = new Properties()
-				properties.setProperty('analytics.authentication.token', getRawValue(token))
-				properties.setProperty('analytics.integration.enable', 'true')
-				properties.setProperty('analytics.team', getRawValue(JsonUtil.toJson(team)))
-				properties.setProperty('analytics.project', getRawValue(JsonUtil.toJson(project)))
-				properties.setProperty('analytics.testresult.autosubmit', 'true')
+		try{
+			Path testOpsSettingsPath = Paths.get(RunConfiguration.getProjectDir(),
+					'settings', 'internal', 'com.kms.katalon.integration.analytics.properties')
+			File testOpsSettingsFile = testOpsSettingsPath.toFile()
+			if(!isIntegratedEnabled(testOpsSettingsFile)){
+				Properties userProperties = getUserProperties()
+				String username = userProperties.getProperty('email')
+				String encryptedPassword = userProperties.getProperty('password')
+				String password = (CryptoUtil.decode(CryptoUtil.getDefault(encryptedPassword)))
+				String serverUrl = userProperties.getProperty('testOps.serverUrl')
+				if(StringUtils.isBlank(serverUrl)){
+					serverUrl = DEFAULT_SERVER_URL
+				}
+				String token = requestToken(serverUrl, username, password)
+				def (project, team) = getFirstProject(serverUrl, token)
+				if(project != null && team != null){
+					Properties properties = new Properties()
+					properties.setProperty('analytics.authentication.token', getRawValue(token))
+					properties.setProperty('analytics.integration.enable', 'true')
+					properties.setProperty('analytics.team', getRawValue(JsonUtil.toJson(team)))
+					properties.setProperty('analytics.project', getRawValue(JsonUtil.toJson(project)))
+					properties.setProperty('analytics.testresult.autosubmit', 'true')
 
-				FileOutputStream fos = new FileOutputStream(testOpsSettingsFile)
-				properties.store(fos, null)
+					FileOutputStream fos = new FileOutputStream(testOpsSettingsFile)
+					properties.store(fos, null)
+				}
 			}
+		} catch (Exception e){
+			// do nothing
 		}
 	}
 
