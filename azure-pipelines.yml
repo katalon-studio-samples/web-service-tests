@@ -70,34 +70,34 @@ stages:
         set -ex
         tar -xvf katalon_runtime_engine.tar.gz
       displayName: unzip KRE package
-    # - script: |
-    #     set -ex
-    #     kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
-    #     projectPath="${WORK_DIR}/web-service-tests/web-service-tests.prj"
-    #     testSuite="${WORK_DIR}/web-service-tests/Test Suites"
-    #     ls -al
-    #     echo $projectPath
-    #     echo $katalonc
-    #     echo $testSuite
-    #     ls -al "$(pwd)/web-service-tests/web-service-tests.prj"
-    #     cd '/Users/runner/work/1/s/web-service-tests/Test Suites'
-    #     ls -al
-    #     "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuitePath="Test Suites/All Test Cases" -browserType="Firefox" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
-    #   displayName: Run sample API test
     - script: |
         set -ex
         kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
-        projectPath="${WORK_DIR}/shopping-cart-tests/shopping-cart-tests.prj"
-        testSuite="${WORK_DIR}/shopping-cart-tests/Test Suites"
+        projectPath="${WORK_DIR}/web-service-tests/web-service-tests.prj"
+        testSuite="${WORK_DIR}/web-service-tests/Test Suites"
         ls -al
         echo $projectPath
         echo $katalonc
         echo $testSuite
-        ls -al "$(pwd)/shopping-cart-tests/shopping-cart-tests.prj"
-        cd '/Users/runner/work/1/s/shopping-cart-tests/Test Suites'
+        ls -al "$(pwd)/web-service-tests/web-service-tests.prj"
+        cd '/Users/runner/work/1/s/web-service-tests/Test Suites'
         ls -al
-        "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/Shopping-cart-tests - Run All Test Suites" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
-      displayName: Run sample WebUI shopping card test
+        "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuitePath="Test Suites/web-service-tests - All Test Cases" -browserType="Firefox" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample API test
+    # - script: |
+    #     set -ex
+    #     kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+    #     projectPath="${WORK_DIR}/shopping-cart-tests/shopping-cart-tests.prj"
+    #     testSuite="${WORK_DIR}/shopping-cart-tests/Test Suites"
+    #     ls -al
+    #     echo $projectPath
+    #     echo $katalonc
+    #     echo $testSuite
+    #     ls -al "$(pwd)/shopping-cart-tests/shopping-cart-tests.prj"
+    #     cd '/Users/runner/work/1/s/shopping-cart-tests/Test Suites'
+    #     ls -al
+    #     "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/Shopping-cart-tests - Run All Test Suites" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+    #   displayName: Run sample WebUI shopping card test
     # - script: |
     #     set -ex
     #     kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
