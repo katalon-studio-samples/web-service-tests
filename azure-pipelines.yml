@@ -110,7 +110,7 @@ stages:
         ls -al "$(pwd)/healthcare-tests/test.prj"
         cd '/Users/runner/work/1/s/healthcare-tests/Test Suites'
         ls -al
-        "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/TS_RegressionTestCollection" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+        "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/healthcare-tests - TS_RegressionTestCollection" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
       displayName: Run sample WebUI healthcare test
     # - script: |
     #     set -ex
