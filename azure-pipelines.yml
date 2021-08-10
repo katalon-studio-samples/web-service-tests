@@ -50,9 +50,9 @@ stages:
       WORK_DIR: $(Build.Repository.LocalPath)
       TMP_DIR: $(Build.ArtifactStagingDirectory)
     steps:
-    # - checkout: self
-    #   clean: true
-    #   fetchDepth: 1
+    - checkout: self
+      clean: true
+      fetchDepth: 1
     # - checkout: SampleWebUIShoppingCartTest
     #   fetchDepth: 1
     #   clean: true
