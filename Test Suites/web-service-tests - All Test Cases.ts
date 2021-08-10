@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>All Test Cases</name>
+   <name>web-service-tests - All Test Cases</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -9,6 +9,7 @@
    <pageLoadTimeout>30</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>df88b384-4db8-4c82-b255-0afa0fd22006</testSuiteGuid>
    <testCaseLink>
       <guid>28a02fc5-00a1-40cf-9a4b-ad8847be59bb</guid>
