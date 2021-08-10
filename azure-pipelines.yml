@@ -124,5 +124,5 @@ stages:
         ls -al "$(pwd)/api-web-combination-sample/Sample Jira ticket creation.prj"
         cd '/Users/runner/work/1/s/api-web-combination-sample/Test Suites'
         ls -al
-        "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuitePath="Test Suites/Create and update a task by both API and UI" -browserType="Chrome" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+        "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuitePath="Test Suites/api-web-combination-sample - Create and update a task by both API and UI" -browserType="Chrome" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
       displayName: Run sample WebUI and API combination test
