@@ -56,12 +56,12 @@ stages:
     - checkout: SampleWebUIShoppingCartTest
       fetchDepth: 1
       clean: true
-    # - checkout: SampleWebUIHealthCareTest
-    #   fetchDepth: 1
-    #   clean: true
-    # - checkout: SampleWebUIAndAPICombinationTest
-    #   fetchDepth: 1
-    #   clean: true
+    - checkout: SampleWebUIHealthCareTest
+      fetchDepth: 1
+      clean: true
+    - checkout: SampleWebUIAndAPICombinationTest
+      fetchDepth: 1
+      clean: true
     - bash: |
         set -ex
         curl "https://download.katalon.com/${VERSION}/Katalon_Studio_Engine_MacOS-${VERSION}.tar.gz" -o katalon_runtime_engine.tar.gz
@@ -84,45 +84,45 @@ stages:
         ls -al
         "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuitePath="Test Suites/web-service-tests - All Test Cases" -browserType="Firefox" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
       displayName: Run sample API test
-    # - script: |
-    #     set -ex
-    #     kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
-    #     projectPath="${WORK_DIR}/shopping-cart-tests/shopping-cart-tests.prj"
-    #     testSuite="${WORK_DIR}/shopping-cart-tests/Test Suites"
-    #     ls -al
-    #     echo $projectPath
-    #     echo $katalonc
-    #     echo $testSuite
-    #     ls -al "$(pwd)/shopping-cart-tests/shopping-cart-tests.prj"
-    #     cd '/Users/runner/work/1/s/shopping-cart-tests/Test Suites'
-    #     ls -al
-    #     "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/Shopping-cart-tests - Run All Test Suites" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
-    #   displayName: Run sample WebUI shopping card test
-    # - script: |
-    #     set -ex
-    #     kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
-    #     projectPath="${WORK_DIR}/healthcare-tests/test.prj"
-    #     testSuite="${WORK_DIR}/healthcare-tests/Test Suites"
-    #     ls -al
-    #     echo $projectPath
-    #     echo $katalonc
-    #     echo $testSuite
-    #     ls -al "$(pwd)/healthcare-tests/test.prj"
-    #     cd '/Users/runner/work/1/s/healthcare-tests/Test Suites'
-    #     ls -al
-    #     "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/healthcare-tests - TS_RegressionTestCollection" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
-    #   displayName: Run sample WebUI healthcare test
-    # - script: |
-    #     set -ex
-    #     kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
-    #     projectPath="${WORK_DIR}/api-web-combination-sample/Sample Jira ticket creation.prj"
-    #     testSuite="${WORK_DIR}/api-web-combination-sample/Test Suites"
-    #     ls -al
-    #     echo $projectPath
-    #     echo $katalonc
-    #     echo $testSuite
-    #     ls -al "$(pwd)/api-web-combination-sample/Sample Jira ticket creation.prj"
-    #     cd '/Users/runner/work/1/s/api-web-combination-sample/Test Suites'
-    #     ls -al
-    #     "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuitePath="Test Suites/api-web-combination-sample - Create and update a task by both API and UI" -browserType="Chrome" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
-    #   displayName: Run sample WebUI and API combination test
+    - script: |
+        set -ex
+        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+        projectPath="${WORK_DIR}/shopping-cart-tests/shopping-cart-tests.prj"
+        testSuite="${WORK_DIR}/shopping-cart-tests/Test Suites"
+        ls -al
+        echo $projectPath
+        echo $katalonc
+        echo $testSuite
+        ls -al "$(pwd)/shopping-cart-tests/shopping-cart-tests.prj"
+        cd '/Users/runner/work/1/s/shopping-cart-tests/Test Suites'
+        ls -al
+        "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/Shopping-cart-tests - Run All Test Suites" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample WebUI shopping card test
+    - script: |
+        set -ex
+        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+        projectPath="${WORK_DIR}/healthcare-tests/test.prj"
+        testSuite="${WORK_DIR}/healthcare-tests/Test Suites"
+        ls -al
+        echo $projectPath
+        echo $katalonc
+        echo $testSuite
+        ls -al "$(pwd)/healthcare-tests/test.prj"
+        cd '/Users/runner/work/1/s/healthcare-tests/Test Suites'
+        ls -al
+        "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/healthcare-tests - TS_RegressionTestCollection" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample WebUI healthcare test
+    - script: |
+        set -ex
+        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+        projectPath="${WORK_DIR}/api-web-combination-sample/Sample Jira ticket creation.prj"
+        testSuite="${WORK_DIR}/api-web-combination-sample/Test Suites"
+        ls -al
+        echo $projectPath
+        echo $katalonc
+        echo $testSuite
+        ls -al "$(pwd)/api-web-combination-sample/Sample Jira ticket creation.prj"
+        cd '/Users/runner/work/1/s/api-web-combination-sample/Test Suites'
+        ls -al
+        "$kataloncPath" -apiKey="1fa1ef2c-2b34-49df-9991-509c76c62cc0" -projectPath="$projectPath" -testSuitePath="Test Suites/api-web-combination-sample - Create and update a task by both API and UI" -browserType="Chrome" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample WebUI and API combination test
