@@ -73,20 +73,6 @@ stages:
     - script: |
         set -ex
         kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
-        projectPath="${WORK_DIR}/shopping-cart-tests/shopping-cart-tests.prj"
-        testSuite="${WORK_DIR}/shopping-cart-tests/Test Suites"
-        ls -al
-        echo $projectPath
-        echo $katalonc
-        echo $testSuite
-        ls -al "$(pwd)/shopping-cart-tests/shopping-cart-tests.prj"
-        cd '/Users/runner/work/1/s/shopping-cart-tests/Test Suites'
-        ls -al
-        "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuitePath="Test Suites/All Test Cases" -browserType="Firefox" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
-      displayName: Run sample API test
-    - script: |
-        set -ex
-        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
         projectPath="${WORK_DIR}/web-service-tests/web-service-tests.prj"
         testSuite="${WORK_DIR}/web-service-tests/Test Suites"
         ls -al
@@ -95,6 +81,20 @@ stages:
         echo $testSuite
         ls -al "$(pwd)/web-service-tests/web-service-tests.prj"
         cd '/Users/runner/work/1/s/web-service-tests/Test Suites'
+        ls -al
+        "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuitePath="Test Suites/All Test Cases" -browserType="Firefox" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample API test
+    - script: |
+        set -ex
+        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+        projectPath="${WORK_DIR}/shopping-cart-tests/shopping-cart-tests.prj"
+        testSuite="${WORK_DIR}/shopping-cart-tests/Test Suites"
+        ls -al
+        echo $projectPath
+        echo $katalonc
+        echo $testSuite
+        ls -al "$(pwd)/shopping-cart-tests/shopping-cart-tests.prj"
+        cd '/Users/runner/work/1/s/shopping-cart-tests/Test Suites'
         ls -al
         "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/Run All Test Suites" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
       displayName: Run sample WebUI shopping card test
