@@ -1,0 +1,128 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+name: KS Regression Automation
+
+## this configuration is ignored since the pipeline is already connected to github
+## and there is already a step checkout to clone script from github under 'steps'
+resources: 
+  repositories:
+#   - repository: SampleAPITest
+#     type: github
+#     ref: refs/heads/master
+#     name: katalon-studio-samples/web-service-tests
+#     endpoint: github.com_kms-loantran
+  - repository: SampleWebUIShoppingCartTest
+    type: github
+    ref: refs/heads/master
+    name: katalon-studio-samples/shopping-cart-tests
+    endpoint: github.com_kms-loantran
+  - repository: SampleWebUIHealthCareTest
+    type: github
+    ref: refs/heads/master
+    name: katalon-studio-samples/healthcare-tests
+    endpoint: github.com_kms-loantran
+  - repository: SampleWebUIAndAPICombinationTest
+    type: github
+    ref: refs/heads/master
+    name: katalon-studio-samples/api-web-combination-sample
+    endpoint: github.com_kms-loantran
+
+trigger:
+  - master
+
+pool:
+  vmImage: macOS-latest
+
+stages:
+- stage: Test
+  displayName: Run Automation script
+  jobs:
+  - job: TestOnMac
+    displayName: Run automation script on Mac
+    continueOnError: true
+    variables:  # job-level
+      VERSION: '8.1.0'
+      AUTO_UPDATE_WEBDRIVERS: true
+      WORK_DIR: $(Build.Repository.LocalPath)
+      TMP_DIR: $(Build.ArtifactStagingDirectory)
+    steps:
+    - checkout: self
+      clean: true
+      fetchDepth: 1
+    - checkout: SampleWebUIShoppingCartTest
+      fetchDepth: 1
+      clean: true
+    - checkout: SampleWebUIHealthCareTest
+      fetchDepth: 1
+      clean: true
+    - checkout: SampleWebUIAndAPICombinationTest
+      fetchDepth: 1
+      clean: true
+    - bash: |
+        set -ex
+        curl "https://download.katalon.com/${VERSION}/Katalon_Studio_Engine_MacOS-${VERSION}.tar.gz" -o katalon_runtime_engine.tar.gz
+      displayName: download KRE package
+    - bash: |
+        set -ex
+        tar -xvf katalon_runtime_engine.tar.gz
+      displayName: unzip KRE package
+    - script: |
+        set -ex
+        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+        projectPath="${WORK_DIR}/shopping-cart-tests/shopping-cart-tests.prj"
+        testSuite="${WORK_DIR}/shopping-cart-tests/Test Suites"
+        ls -al
+        echo $projectPath
+        echo $katalonc
+        echo $testSuite
+        ls -al "$(pwd)/shopping-cart-tests/shopping-cart-tests.prj"
+        cd '/Users/runner/work/1/s/shopping-cart-tests/Test Suites'
+        ls -al
+        "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuitePath="Test Suites/All Test Cases" -browserType="Firefox" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample API test
+    - script: |
+        set -ex
+        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+        projectPath="${WORK_DIR}/web-service-tests/web-service-tests.prj"
+        testSuite="${WORK_DIR}/web-service-tests/Test Suites"
+        ls -al
+        echo $projectPath
+        echo $katalonc
+        echo $testSuite
+        ls -al "$(pwd)/web-service-tests/web-service-tests.prj"
+        cd '/Users/runner/work/1/s/web-service-tests/Test Suites'
+        ls -al
+        "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/Run All Test Suites" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample WebUI shopping card test
+    - script: |
+        set -ex
+        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+        projectPath="${WORK_DIR}/healthcare-tests/test.prj"
+        testSuite="${WORK_DIR}/healthcare-tests/Test Suites"
+        ls -al
+        echo $projectPath
+        echo $katalonc
+        echo $testSuite
+        ls -al "$(pwd)/healthcare-tests/test.prj"
+        cd '/Users/runner/work/1/s/healthcare-tests/Test Suites'
+        ls -al
+        "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuiteCollectionPath="Test Suites/TS_RegressionTestCollection" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample WebUI healthcare test
+    - script: |
+        set -ex
+        kataloncPath="$(pwd)/Katalon_Studio_Engine_MacOS-${VERSION}/Katalon Studio Engine.app/Contents/MacOS/katalonc"
+        projectPath="${WORK_DIR}/api-web-combination-sample/Sample Jira ticket creation.prj"
+        testSuite="${WORK_DIR}/api-web-combination-sample/Test Suites"
+        ls -al
+        echo $projectPath
+        echo $katalonc
+        echo $testSuite
+        ls -al "$(pwd)/api-web-combination-sample/Sample Jira ticket creation.prj"
+        cd '/Users/runner/work/1/s/api-web-combination-sample/Test Suites'
+        ls -al
+        "$kataloncPath" -apiKey="f94fd9eb-459b-4115-8980-e632fb614490" -projectPath="$projectPath" -testSuitePath="Test Suites/Create and update a task by both API and UI" -browserType="Chrome" --config -webui.autoUpdateDrivers=${AUTO_UPDATE_WEBDRIVERS}
+      displayName: Run sample WebUI and API combination test
