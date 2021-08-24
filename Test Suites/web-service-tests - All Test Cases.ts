@@ -92,4 +92,28 @@
          <variableId>12db7b5a-6bfc-4927-83be-322afbf82b91</variableId>
       </variableLink>
    </testCaseLink>
+   <testCaseLink>
+      <guid>ab1ea427-8753-42f3-9aca-3d6de6f5aae3</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Multiply two integer</testCaseId>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>b2a24078-afda-4bb2-ab52-3a900ed83e79</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>3fd25a2e-88dd-41b0-97f0-7ad4a3c08643</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cc93e815-70e6-4ed6-a0a0-c0f7fd74f7c7</variableId>
+      </variableLink>
+   </testCaseLink>
 </TestSuiteEntity>

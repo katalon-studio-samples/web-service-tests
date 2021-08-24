@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Multiply two integer</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c66ae47a-662e-4309-9219-ce3ee38791d8</testCaseGuid>
+   <variable>
+      <defaultValue>4</defaultValue>
+      <description></description>
+      <id>b2a24078-afda-4bb2-ab52-3a900ed83e79</id>
+      <masked>false</masked>
+      <name>firstNumber</name>
+   </variable>
+   <variable>
+      <defaultValue>3</defaultValue>
+      <description></description>
+      <id>3fd25a2e-88dd-41b0-97f0-7ad4a3c08643</id>
+      <masked>false</masked>
+      <name>secondNumber</name>
+   </variable>
+   <variable>
+      <defaultValue>12</defaultValue>
+      <description></description>
+      <id>cc93e815-70e6-4ed6-a0a0-c0f7fd74f7c7</id>
+      <masked>false</masked>
+      <name>expectedResult</name>
+   </variable>
+</TestCaseEntity>

@@ -6,10 +6,12 @@
    <elementGuidId>4fc9a73f-74bc-40c9-8fc4-73c6c0da00d6</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
+   <connectionTimeout>0</connectionTimeout>
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent></httpBodyContent>
    <httpBodyType></httpBodyType>
+   <maxResponseSize>0</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
    <restUrl>${GlobalVariable.baseUrl}/api/users/${id}</restUrl>
@@ -17,7 +19,10 @@
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
+   <soapServiceEndpoint></soapServiceEndpoint>
    <soapServiceFunction></soapServiceFunction>
+   <socketTimeout>0</socketTimeout>
+   <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
    <variables>
       <defaultValue>21</defaultValue>
       <description></description>
@@ -82,6 +87,7 @@ assert response.getStatusCode() == 200
 WS.verifyElementPropertyValue(response, &quot;age&quot;, 25)
 WS.verifyElementPropertyValue(response, &quot;username&quot;, &quot;mimi&quot;)
 WS.verifyElementPropertyValue(response, &quot;password&quot;, &quot;123456789&quot;)
-WS.verifyElementPropertyValue(response, &quot;gender&quot;, &quot;MALE&quot;)</verificationScript>
+WS.verifyElementPropertyValue(response, &quot;gender&quot;, &quot;MALE&quot;)
+WS.verifyElementsCount(response, '', 6)</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>
