@@ -45,7 +45,7 @@ stages:
     displayName: Run automation script on Mac
     continueOnError: true
     variables:  # job-level
-      VERSION: '8.2.5'
+      VERSION: '8.3.0'
       AUTO_UPDATE_WEBDRIVERS: true
       WORK_DIR: $(Build.Repository.LocalPath)
       TMP_DIR: $(Build.ArtifactStagingDirectory)
