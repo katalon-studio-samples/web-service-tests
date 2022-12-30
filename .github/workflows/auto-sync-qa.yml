@@ -9,21 +9,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger TestOps auto sync
-        run: |
-          curl \
-          -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ secrets.ACTIONS_KEY }}" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          https://api.github.com/repos/katalon-studio-samples/testops-sync-script-repo-action/actions/workflows/staging.yml/dispatches \
-          -d '{"ref":"main"}'
+      - name: Checkout main
+        uses: actions/checkout@v3
 
-          curl \
-          -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ secrets.ACTIONS_KEY }}" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          https://api.github.com/repos/katalon-studio-samples/testops-sync-script-repo-action/actions/workflows/qa.yml/dispatches \
-          -d '{"ref":"main"}'
-      - uses: actions/checkout@v3
+      - name: Scan repository for QA
+        uses: katalon-studio-samples/testops-sync-script-repo-action@main
+        with: 
+          testops-base-url: https://testops.qa.katalon.com
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          token: ${{ secrets.TOKEN }}
+
+      - name: Scan repository for staging
+        uses: katalon-studio-samples/testops-sync-script-repo-action@main
+        with: 
+          testops-base-url: https://testops.staging.katalon.com
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          token: ${{ secrets.TOKEN }}
