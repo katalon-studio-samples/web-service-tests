@@ -12,16 +12,16 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v3
 
-      - name: Scan repository for QA
-        uses: katalon-studio-samples/testops-sync-script-repo-action@main
-        with: 
-          testops-base-url: https://testops.qa.katalon.com
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          token: ${{ secrets.TOKEN }}
+      # - name: Scan repository for QA
+      #   uses: katalon-studio-samples/testops-sync-script-repo-action@qtest
+      #   with: 
+      #     testops-base-url: https://testops.qa.katalon.com
+      #     username: ${{ secrets.USERNAME }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     token: ${{ secrets.TOKEN }}
 
       - name: Scan repository for staging
-        uses: katalon-studio-samples/testops-sync-script-repo-action@main
+        uses: katalon-studio-samples/testops-sync-script-repo-action@qtest
         with: 
           testops-base-url: https://testops.staging.katalon.com
           username: ${{ secrets.USERNAME }}
