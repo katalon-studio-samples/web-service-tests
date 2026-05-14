@@ -1,21 +1,88 @@
-name: Trigger auto sync
+# .github/workflows/katalon-web-service.yml
+name: Katalon Web Service Tests
+
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - qa
+    inputs:
+      test_suite_path:
+        description: 'Katalon Test Suite path (relative to repo), leave blank to auto-pick first .ts'
+        required: false
+        default: ''
 
 jobs:
-  build:
+  run-api-tests:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout main
-        uses: actions/checkout@v3
+    timeout-minutes: 60
 
-      - name: Scan repository for QA
-        uses: katalon-studio-samples/testops-sync-script-repo-action@main
-        with: 
-          testops-base-url: https://testops.qa.katalon.com
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          token: ${{ secrets.TOKEN }}
+    env:
+      KATALON_IMAGE: katalonstudio/katalon:latest
+      REPORT_DIR: ${{ github.workspace }}/reports
+
+    steps:
+      - name: Checkout this repo (sample project)
+        uses: actions/checkout@v4
+        with:
+          # If you are running this FROM ANOTHER REPO, uncomment the next 2 lines:
+          # repository: katalon-studio-samples/web-service-tests
+          # fetch-depth: 0
+
+      - name: Show project root
+        run: ls -la
+
+      - name: Ensure project file exists
+        run: |
+          test -f "web-service-tests.prj" || (echo "Project file not found"; exit 1)
+          echo "Found Katalon project: web-service-tests.prj"
+        # The project file is at repo root. :contentReference[oaicite:0]{index=0}
+
+      - name: Pick Test Suite (auto if not provided)
+        id: pick
+        shell: bash
+        run: |
+          if [ -n "${{ github.event.inputs.test_suite_path }}" ]; then
+            SUITE="${{ github.event.inputs.test_suite_path }}"
+          else
+            # pick the first *.ts file under 'Test Suites'
+            SUITE="$(find "Test Suites" -type f -name "*.ts" | head -n1)"
+          fi
+          if [ -z "$SUITE" ]; then
+            echo "No Test Suite (*.ts) found under 'Test Suites' folder."
+            exit 1
+          fi
+          echo "suite=$SUITE" >> "$GITHUB_OUTPUT"
+          echo "Using Test Suite: $SUITE"
+
+      - name: Prepare reports dir
+        run: mkdir -p "$REPORT_DIR"
+
+      - name: Pull Katalon image
+        run: docker pull $KATALON_IMAGE
+
+      - name: Run Katalon (Web Service/API tests)
+        env:
+          KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
+        run: |
+          docker run --rm \
+            -e KATALON_API_KEY="$KATALON_API_KEY" \
+            -v "${{ github.workspace }}":/katalon/katalon/source:ro \
+            -v "$REPORT_DIR":/katalon/katalon/report \
+            $KATALON_IMAGE \
+            katalonc -noSplash -runMode=console -consoleLog -noExit \
+              -projectPath="/katalon/katalon/source/web-service-tests.prj" \
+              -retry=0 \
+              -testSuitePath="${{ steps.pick.outputs.suite }}" \
+              -executionProfile="default" \
+              -browserType="Web Service" \
+              -reportFolder="/katalon/katalon/report"
+        # KRE uses -browserType="Web Service" for API/Web Service runs. :contentReference[oaicite:1]{index=1}
+
+      - name: Upload reports (HTML/JUnit/XML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: katalon-webservice-reports
+          path: |
+            ${{ env.REPORT_DIR }}/
+            **/JUnit_Report.xml
+          if-no-files-found: warn
+          retention-days: 7

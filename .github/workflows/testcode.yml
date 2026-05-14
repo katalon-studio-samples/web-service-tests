@@ -1,0 +1,52 @@
+name: Katalon Web Service (fixed)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      KATALON_IMAGE: katalonstudio/katalon:latest
+      REPORT_DIR: ${{ github.workspace }}/reports
+      # set your suite path EXACTLY as it appears in Katalon (without .ts is fine)
+      SUITE_PATH: 'Test Suites/web-service-tests - All Test Cases'
+      EXEC_PROFILE: 'default'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare reports dir
+        run: mkdir -p "$REPORT_DIR"
+
+      - name: Pull Katalon image
+        run: docker pull $KATALON_IMAGE
+
+      - name: Run Katalon (with license + safe quoting)
+        env:
+          KATALON_API_KEY: ${{ secrets.KATALON_API_KEY }}
+        run: |
+          docker run --rm \
+            -e KATALON_API_KEY="$KATALON_API_KEY" \
+            -v "${{ github.workspace }}":/katalon/katalon/source:ro \
+            -v "$REPORT_DIR":/katalon/katalon/report \
+            $KATALON_IMAGE \
+            katalonc -noSplash -runMode=console -consoleLog \
+              -projectPath="/katalon/katalon/source/web-service-tests.prj" \
+              -testSuitePath="$SUITE_PATH" \
+              -executionProfile="$EXEC_PROFILE" \
+              -browserType="Web Service" \
+              -reportFolder="/katalon/katalon/report" \
+              -apiKey="$KATALON_API_KEY" \
+              -enableLicenseRetry -retry=3 -retryFailedTestCases=false
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: katalon-reports
+          path: |
+            ${{ env.REPORT_DIR }}/
+            **/JUnit_Report.xml
+          if-no-files-found: warn
